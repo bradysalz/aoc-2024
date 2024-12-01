@@ -1,4 +1,4 @@
-# Advent of Code Elixir Starter
+# Advent of Code Elixir Starter (Brady's version)
 
 A batteries included starter pack for participating in [Advent of Code](https://www.adventofcode.com) using Elixir!
 
