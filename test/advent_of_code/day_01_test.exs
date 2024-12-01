@@ -10,7 +10,6 @@ defmodule AdventOfCode.Day01Test do
     assert result == 11
   end
 
-  @tag
   test "part2" do
     input = "data/day_01_test.txt"
     result = part2(input)
