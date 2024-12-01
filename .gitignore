@@ -22,5 +22,8 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 advent_of_code_2018-*.tar
 
+# Ignore input data (even test data, sorry)
+data/
+
 # Ignore configuration secrets
 /config/secrets.exs
