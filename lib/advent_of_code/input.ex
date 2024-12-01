@@ -32,7 +32,7 @@ defmodule AdventOfCode.Input do
   @doc """
   If, somehow, your input is invalid or mangled and you want to delete it from
   your cache so you can re-fetch it, this will save your bacon.
-  Please don't use this to retrieve the input from the server repeatedly!
+  Please don"t use this to retrieve the input from the server repeatedly!
   """
   def delete!(day, year \\ nil)
   def delete!(day, nil), do: delete!(day, default_year())
@@ -50,10 +50,10 @@ defmodule AdventOfCode.Input do
   defp from_cache!(day, year), do: File.read!(cache_path(day, year))
 
   defp download!(day, year) do
-    {:ok, {{'HTTP/1.1', 200, 'OK'}, _, input}} =
+    {:ok, {{"HTTP/1.1", 200, "OK"}, _, input}} =
       :httpc.request(
         :get,
-        {'https://adventofcode.com/#{year}/day/#{day}/input', headers()},
+        {"https://adventofcode.com/#{year}/day/#{day}/input", headers()},
         [],
         []
       )
@@ -84,7 +84,7 @@ defmodule AdventOfCode.Input do
 
   defp headers,
     do: [
-      {'user-agent', 'github.com/mhanberg/advent-of-code-elixir-starter by aoc@mitchellhanberg.com'},
-      {'cookie', String.to_charlist("session=" <> Keyword.get(config(), :session_cookie))}
+      {"user-agent", "github.com/mhanberg/advent-of-code-elixir-starter by aoc@mitchellhanberg.com"},
+      {"cookie", String.to_charlist("session=" <> Keyword.get(config(), :session_cookie))}
     ]
 end
