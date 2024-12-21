@@ -28,3 +28,5 @@ data/
 
 # Ignore configuration secrets
 /config/secrets.exs
+.vscode/*
+.iex.exs
