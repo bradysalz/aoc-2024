@@ -1,16 +1,16 @@
-defmodule Guard do
-  defstruct [:x, :y, :direction]
-end
-
-defmodule Cell do
-  defstruct [:x, :y, :is_wall, is_guard: false, guard_dir: [], visited: false]
-end
-
 defmodule AdventOfCode.Day06 do
   @up {0, 1}
   @down {0, -1}
   @left {1, 0}
   @right {-1, 0}
+
+  defmodule Guard do
+    defstruct [:x, :y, :direction]
+  end
+
+  defmodule Cell do
+    defstruct [:x, :y, :is_wall, is_guard: false, guard_dir: [], visited: false]
+  end
 
   def print_grid(grid) do
     IO.puts("")
