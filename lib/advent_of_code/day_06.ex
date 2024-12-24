@@ -225,10 +225,8 @@ defmodule AdventOfCode.Day06 do
         %Cell{cell | visited: false, is_wall: true, guard_dir: []}
       end)
 
-    IO.puts(Kernel.length(visited_walls))
     #  3. try to solve each grid, making one new cell a wall
     Enum.map(visited_walls, fn new_wall ->
-      IO.inspect(new_wall)
       new_grid = add_one_wall(grid, new_wall)
       {status, _, _} = update_grid(new_grid, guard, max_x, max_y)
       status == :looped
