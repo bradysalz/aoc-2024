@@ -122,8 +122,6 @@ defmodule AdventOfCode.Day09 do
   end
 
   def defrag_disk(disk) do
-    IO.puts("#######")
-
     file_slots =
       disk
       |> Enum.with_index()
@@ -131,8 +129,6 @@ defmodule AdventOfCode.Day09 do
       |> Enum.reverse()
 
     Enum.reduce(file_slots, disk, fn file_block, acc ->
-      log_disk(acc)
-
       gap_found =
         find_all_gaps(acc)
         |> found_gap_for_file?(file_block)
@@ -162,15 +158,14 @@ defmodule AdventOfCode.Day09 do
 
   def found_gap_for_file?(gaps, file_block) do
     [{gap_start, gap_length} | rest_of_gaps] = gaps
-
     {block, block_start} = file_block
 
-    if gap_length >= block.block_len do
-      gap_start
+    # don't keep looking past our first location
+    if gap_start > block_start do
+      nil
     else
-      # don't keep looking if we've hit all slots
-      if gap_start > block_start do
-        nil
+      if gap_length >= block.block_len do
+        gap_start
       else
         found_gap_for_file?(rest_of_gaps, file_block)
       end
@@ -206,7 +201,6 @@ defmodule AdventOfCode.Day09 do
     |> String.split("", trim: true)
     |> Enum.map(&String.to_integer/1)
     |> map_disk()
-    |> IO.inspect()
     |> defrag_disk()
     |> calculate_checksum()
   end
